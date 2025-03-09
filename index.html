@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday to the loml Tayyab Haider</title>
+    <!-- Added Font Awesome for music control icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Color Palette */
+        :root {
+            --dark-green: #18230F;
+            --forest-green: #27391C;
+            --medium-green: #255F38;
+            --light-green: #1F7D53;
+            --text-light: #f5f5f5;
+            --section-padding: 80px 20px;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-light);
+            background-color: var(--dark-green);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--dark-green);
+            color: var(--text-light);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.3s ease;
+        }
+        
+        header.scrolled {
+            background-color: rgba(24, 35, 15, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--light-green);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--dark-green), var(--forest-green));
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--light-green);
+            margin-bottom: 30px;
+        }
+        
+        /* Sections */
+        section {
+            padding: var(--section-padding);
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .memories {
+            background-color: var(--forest-green);
+        }
+        
+        .gallery {
+            background-color: var(--medium-green);
+        }
+        
+        .stats {
+            background-color: var(--forest-green);
+        }
+        
+        .message {
+            background-color: var(--light-green);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(24, 35, 15, 0.8);
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .stats-card {
+            background-color: rgba(24, 35, 15, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-card h3 {
+            color: var(--light-green);
+            margin-bottom: 15px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            transition: transform 0.5s ease;
+        }
+        
+        .stat-number.animated {
+            transform: scale(1.2);
+        }
+        
+        .stat-desc {
+            color: var(--light-green);
+        }
+        
+        .chart-container {
+            background-color: rgba(24, 35, 15, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            height: 400px;
+        }
+        
+        .pie-charts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pie-chart-container {
+            background-color: rgba(24, 35, 15, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            height: 350px;
+        }
+        
+        /* Message Section */
+        .message-container {
+            background-color: rgba(24, 35, 15, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        /* Button */
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--light-green);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .button:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Music Control - Added for music functionality */
+        .music-control {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .music-button {
+            background-color: var(--light-green);
+            color: var(--text-light);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .music-button:hover {
+            background-color: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .pie-charts {
+                grid-template-columns: 1fr;
+            }
+            
+            .music-control {
+                top: 70px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Audio Element for Background Music -->
+    <audio id="backgroundMusic" loop>
+        <source src="music\Coldplay - Yellow (Official Video)-[AudioTrimmer.com].mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Header with Navigation -->
+    <header id="header">
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#memories">Memories</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#stats">Our Stats</a></li>
+                <li><a href="#message">My Message</a></li>
+            </ul>
+        </nav>
+        <!-- Music Control Button -->
+        <div class="music-control">
+            <button id="musicToggle" class="music-button">
+                <i class="fas fa-volume-up"></i> Music
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <img src="img\YNstyle.jpg" alt="Birthday Friend" class="hero-image">
+            <h1>Happy Birthday, Mr Tayyab Haider!</h1>
+            <p>To my amazing friend on your special day.<br> Thank you for being you.</p>
+            <a href="#memories" class="button">Explore Our Memories</a>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section id="memories" class="memories">
+        <h2 class="section-title">Our Story</h2>
+        <div class="section-content">
+            <p style="text-align: center;">From laughing while playing games till 4 in the morning to crying over assignments till 4 <br>we grew up <br> From Who cares about girls to "There's this one girl" <br> we grew up</p>
+
+            <p style="text-align: center;">Throughout all these years you have evolved into a bigger and better person, survived through thick and thin. This is a tribute to you and to our friendship &lt;3 </pstyle>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="gallery" class="gallery">
+        <h2 class="section-title">Photo Gallery</h2>
+        <div class="section-content">
+            <div class="photo-gallery">
+                <!-- Replace placeholder images with your actual photos -->
+                <div class="gallery-item">
+                    <img src="img\bench.jpg" alt="Memory 1">
+                    <div class="gallery-caption">After our marathon</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img\uni.jpg" alt="Memory 2">
+                    <div class="gallery-caption">You finally found your people in uni</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img\baby_pic.jpg" alt="Memory 3">
+                    <div class="gallery-caption">Chota Don</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img\style.jpg" alt="Memory 4">
+                    <div class="gallery-caption">Modeling Man</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img\twink.jpg" alt="Memory 5">
+                    <div class="gallery-caption">One of my favourite pics together</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img\dinner.jpg" alt="Memory 6">
+                    <div class="gallery-caption">Date Night</div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="img\drink.jpg" alt="Memory 6">
+                    <div class="gallery-caption">You really should Apply for the Modeling job</div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="stats" class="stats">
+        <h2 class="section-title">Our Friendship By The Numbers</h2>
+        <div class="section-content">
+            <p style="text-align: center; margin-bottom: 40px;">A look at our friendship through statistics (hover over or tap the numbers to see them animate!)</p>
+            
+            <div class="stats-container">
+                <div class="stats-card">
+                    <h3>Laughs Had</h3>
+                    <div class="stat-number" onmouseover="animateStat(this)" ontouchstart="animateStat(this)">10,237</div>
+                    <p class="stat-desc">(And counting!)</p>
+                </div>
+                
+                <div class="stats-card">
+                    <h3>Tears Shed</h3>
+                    <div class="stat-number" onmouseover="animateStat(this)" ontouchstart="animateStat(this)">486</div>
+                    <p class="stat-desc">(Some happy, some sad)</p>
+                </div>
+                
+                <div class="stats-card">
+                    <h3>Jokes Made</h3>
+                    <div class="stat-number" onmouseover="animateStat(this)" ontouchstart="animateStat(this)">3,752</div>
+                    <p class="stat-desc">(About 40% were actually funny)</p>
+                </div>
+                
+                <div class="stats-card">
+                    <h3>Dates Had</h3>
+                    <div class="stat-number" onmouseover="animateStat(this)" ontouchstart="animateStat(this)">78</div>
+                    <p class="stat-desc">(Probably more than we'll have with our wives)</p>
+                </div>
+                
+                <div class="stats-card">
+                    <h3>Games Played</h3>
+                    <div class="stat-number" onmouseover="animateStat(this)" ontouchstart="animateStat(this)">924</div>
+                    <p class="stat-desc">(You've won more than I'd like to admit)</p>
+                </div>
+                
+                <div class="stats-card">
+                    <h3>Adventures Had</h3>
+                    <div class="stat-number" onmouseover="animateStat(this)" ontouchstart="animateStat(this)">145</div>
+                    <p class="stat-desc">(With many more to come!)</p>
+                </div>
+            </div>
+            
+            <!-- Interactive Charts -->
+            <h3 style="text-align: center; margin: 50px 0 30px;">Interactive Charts</h3>
+            
+            <!-- Bar Chart -->
+            <div class="chart-container">
+                <canvas id="barChart"></canvas>
+            </div>
+            
+            <!-- Pie Charts -->
+            <div class="pie-charts">
+                <div class="pie-chart-container">
+                    <h3>Types of Laughter</h3>
+                    <canvas id="laughterChart"></canvas>
+                </div>
+                
+                <div class="pie-chart-container">
+                    <h3>Games Breakdown</h3>
+                    <canvas id="gamesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Section -->
+    <section id="message" class="message">
+        <h2 class="section-title">Happy Birthday Message</h2>
+        <div class="section-content">
+            <div class="message-container">
+                <p>Dear Tayyab Haider,</p>
+                <p> Happiest birthday to you, king! I swear, every time I try to put into words what you mean to me, it just doesn’t feel enough. But let’s run it back, because you already know I gotta hype you up properly today.
+
+                    Bro, 10 years deep, and it still feels unreal how solid our friendship is. Through every high, every low, every dumb decision, every hyped up moment, you’ve always been there for me, probably even more than I have for you. And that’s something I don’t take for granted, man.
+                    You’re one of the best people I know, and I mean that. The way you just get people, the way you move through life with so much empathy, wisdom, and just straight up good energy, it’s rare, bro. I’ve learned so much from you, and I hope you know that.
+                    
+                    And let’s just take a second to talk about something I never expected you coming to me for girl advice. Bro, I thought I’d see the sun freeze over before that happened, but here we are. And listen, I got you.
+                    Whatever you need, whenever you need it I’ll even tell her you once gave me your Lambo when I needed it. We gotta sell the dream, my guy.
+                    
+                    I know academics have been kicking your ass, but now it’s your turn to kick its ass. Work hard, but party harder. No matter how tough it gets, just know you’re built for this. And listen, I really hope we end up working at the same firm one day.
+                    Imagine the chaos we’d bring unstoppable duo taking over.
+                    
+                    On a real note though, bro, I pray for you. For your happiness, your success, your health may Allah always bless you, protect you, and keep you away from any negativity. Ameen. You deserve nothing but the best, and I just know you’re gonna do big things.
+                    
+                    Whenever you start doubting yourself (because I know you do sometimes), I’m always here to remind you of who you are. No matter what’s going on, no matter what’s on your mind, I’ll always listen, no judgment, no hesitation. So never hold back, bro whether it’s rants, plans, dreams, or even the dumbest 2 AM thoughts, I’m here. And I mean that.
+                    
+                    And bro, let’s not ignore your style evolution from comb overs to styling layers, you’ve been cooking. Keep doing your thing, gang, because you make it look effortless.
+                    
+                    I do miss our gaming days, but I also get it, we’re leveling up in life. It’s natural to miss the old times, but I know that what’s ahead is even bigger. And listen, that modeling thing you wanna try? Don’t even overthink it, just go for it. We get one life, bro might as well make the most of it.
+                    
+                    So today, on your day, make the most of it. Celebrate yourself, because you deserve it. And just know, no matter where life takes us, I’m always just one call away.
+                    
+                    Love you, my guy. Here’s to many more years of friendship, hype, and doing everything we said we would.
+                    
+                     </p>
+                <p>With love and friendship,</p>
+                <p>Rayaan Raza</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ for Tayyab's 22nd  | by Rayaan</p>
+    </footer>
+
+    <!-- Include Chart.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation for stats numbers
+        function animateStat(element) {
+            element.classList.add('animated');
+            setTimeout(() => {
+                element.classList.remove('animated');
+            }, 700);
+        }
+        
+        // Music control functionality
+        const music = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let musicPlaying = false;
+
+        // Toggle music when clicking the button
+        musicToggle.addEventListener('click', function() {
+            if (musicPlaying) {
+                music.pause();
+                musicPlaying = false;
+                musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i> Music Off';
+            } else {
+                music.play().catch(e => {
+                    console.log('Autoplay prevented. User interaction required.');
+                });
+                musicPlaying = true;
+                musicToggle.innerHTML = '<i class="fas fa-volume-up"></i> Music On';
+            }
+        });
+
+        // Try to play music after user interacts with the page
+        document.body.addEventListener('click', function() {
+            if (!musicPlaying) {
+                music.play().catch(e => {
+                    // This will fail silently if autoplay is blocked by the browser
+                    console.log('Autoplay prevented by browser policy. Use the music button instead.');
+                });
+                musicPlaying = true;
+                musicToggle.innerHTML = '<i class="fas fa-volume-up"></i> Music On';
+            }
+        }, { once: true });
+        
+        // Chart.js implementations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Colors from our theme
+            const chartColors = [
+                '#18230F',
+                '#27391C', 
+                '#255F38', 
+                '#1F7D53',
+                '#2E8B57',
+                '#3CB371'
+            ];
+            
+            // Bar Chart - Years Comparison
+            const barCtx = document.getElementById('barChart').getContext('2d');
+            const barChart = new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Laughs', 'Tears', 'Jokes', 'Dates', 'Games', 'Adventures'],
+                    datasets: [{
+                        label: 'Last Year',
+                        data: [2453, 108, 952, 23, 197, 42],
+                        backgroundColor: '#18230F',
+                        borderColor: '#18230F',
+                        borderWidth: 1
+                    }, {
+                        label: 'This Year',
+                        data: [3184, 97, 1205, 31, 243, 58],
+                        backgroundColor: '#1F7D53',
+                        borderColor: '#1F7D53',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Year-over-Year Friendship Comparison',
+                            color: '#f5f5f5',
+                            font: {
+                                size: 18
+                            }
+                        },
+                        legend: {
+                            labels: {
+                                color: '#f5f5f5'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: '#f5f5f5'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#f5f5f5'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Pie Chart - Laughter Types
+            const laughterCtx = document.getElementById('laughterChart').getContext('2d');
+            const laughterChart = new Chart(laughterCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Reels', 'Chuckles', 'Crying Emoji', 'Wehshi', 'Nose Air'],
+                    datasets: [{
+                        data: [150, 90, 250, 300, 69],
+                        backgroundColor: chartColors,
+                        borderWidth: 1,
+                        borderColor: '#f5f5f5'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#f5f5f5',
+                                padding: 15
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Pie Chart - Games Breakdown
+            const gamesCtx = document.getElementById('gamesChart').getContext('2d');
+            const gamesChart = new Chart(gamesCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Board Games', 'Video Games', 'Card Games', 'Sports(kinda)', 'Party Games'],
+                    datasets: [{
+                        data: [30, 200, 15, 10, 10],
+                        backgroundColor: chartColors,
+                        borderWidth: 1,
+                        borderColor: '#f5f5f5'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#f5f5f5',
+                                padding: 15
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
